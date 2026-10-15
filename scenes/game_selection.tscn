@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://d0bdduglxwqr6"]
 
+[ext_resource type="Texture2D" uid="uid://j001lddqdv0k" path="res://assets/obstcourceprev.png" id="1_46kti"]
+[ext_resource type="Script" uid="uid://b4gyqqff2gl7o" path="res://scenes/game_selection.gd" id="1_injun"]
+[ext_resource type="Texture2D" uid="uid://beygmpy6h3mqg" path="res://assets/background.png" id="2_8tivy"]
+
 [node name="gameSelection" type="Control" unique_id=763005850]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +11,64 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_injun")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1768035420]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 853.0
+offset_bottom = 632.0
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=891987517]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "title"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=72403030]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 32
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=399290933]
+layout_mode = 2
+texture = ExtResource("1_46kti")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=897010884]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "description"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=2093987591]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_constants/separation = 64
+
+[node name="launch_button" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=999955855]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Launch"
+
+[node name="back_button" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=412344753]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Back"
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=2134495605]
+scroll_offset = Vector2(-251, -245)
+repeat_size = Vector2(500, 500)
+autoscroll = Vector2(-100, -100)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1633369795]
+modulate = Color(0.4392157, 0.4392157, 0.4392157, 0.14901961)
+z_index = -1
+texture_filter = 1
+scale = Vector2(5, 5)
+texture = ExtResource("2_8tivy")
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/launch_button" to="." method="_on_launch_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/back_button" to="." method="_on_back_button_pressed"]
